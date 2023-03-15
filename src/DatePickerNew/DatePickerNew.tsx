@@ -53,16 +53,9 @@ export const DatePickerNew = ({
   useEffect(() => {
     const weekType = weekDayStarter === 1 ? "isoWeek" : "week";
 
-    const startDay = value
-      .clone()
-      .startOf("month")
-      .startOf("week")
-      .isoWeekday(weekDayStarter);
-    const endDay = value
-      .clone()
-      .endOf("month")
-      .endOf("week")
-      .isoWeekday(weekDayStarter);
+    const startDay = value.clone().startOf("month").startOf(weekType);
+
+    const endDay = value.clone().endOf("month").endOf(weekType);
 
     const diffWeeks = endDay.diff(startDay, "weeks");
 
